@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+ 
+<generatorConfiguration> 
+	 <classPathEntry
+        location="D:\.m2\repository\mysql\mysql-connector-java\5.1.26\mysql-connector-java-5.1.26.jar" />
+	    <context id="mysqlTables" targetRuntime="MyBatis3">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.1.211:3306/atsp_mc"
+		 userId="root" password="123456"/>
+
+		
+		<!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false"/>
+		</javaTypeResolver>
+		
+		<!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->
+		<javaModelGenerator targetPackage="com.autonavi.tsp.mc.model" targetProject="D:\workspace\java\com-autonavi-tsp-mycenter\mc_interface\src\main\java">
+			<property name="enableSubPackages" value="true"/>
+		</javaModelGenerator>
+		
+		<!--对应的xml mapper文件  -->
+		<sqlMapGenerator targetPackage="/" targetProject="D:\workspace\java\com-autonavi-tsp-mycenter\mc_core\src\main\resources\mapper">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+		
+		<!-- 对应的dao接口 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.autonavi.tsp.mc.dao" targetProject="D:\workspace\java\com-autonavi-tsp-mycenter\mc_core\src\main\java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+		
+		
+<!-- 		<table tableName="emergency_contact" domainObjectName="EmergencyContact"/>
+		<table tableName="service_order" domainObjectName="ServiceOrder"/>
+		<table tableName="vin_service" domainObjectName="VinService"/> -->
+		<table tableName="vin_user" domainObjectName="VinUser"/>
+	<!-- 	<table tableName="his_poi" domainObjectName="HisPoi"/> -->
+		
+	</context>
+</generatorConfiguration> 
